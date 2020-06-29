@@ -6,7 +6,7 @@
     <title>Document</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <?php include 'css/style.php'; ?>
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
 
@@ -20,16 +20,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto pr-5">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="covid19info.php">Covid-19 Info</a>
+        <a class="nav-link" href="covid19info.html">Covid-19 Info</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="news.php">News & Updates</a>
+        <a class="nav-link" href="news.html">News & Updates</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="contact.php">Contact</a>
+        <a class="nav-link" href="contact.html">Contact</a>
       </li>
      
     </ul>
@@ -83,27 +83,3 @@
 </div>
 </body>
 </html>
-
-<?php
-include 'dbcovidsym.php';
-
-if(isset($_POST['submit'])){
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $mobile = $_POST['mobile'];
-    $symp = $_POST['covsym'];
-    $message = $_POST['message'];
-
-    $check = "";
-
-    foreach($symp as $check1){
-        $check .= $check1.",";
-    }
-
-    $insertquery = "insert into csymuser(username, email, mobile, symp, message) values ('$username', '$email', '$mobile', '$check', '$message')";
-
-    $query = mysqli_query($con, $insertquery);
-}
-
-
-?>
