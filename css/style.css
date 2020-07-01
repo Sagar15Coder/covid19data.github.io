@@ -1,5 +1,5 @@
 
-*{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Lato', sans-serif; }
+*{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Lato', sans-serif;}
 
 .nav_style{
     background-color: #FFF0F5!important;
@@ -51,9 +51,8 @@
 }
 .corona-data h1{
     font-size: 2rem;
-    text-align: center
+    text-align: center;
 }
-
 
 .table{
     border-radius: 5px;
@@ -72,3 +71,11 @@
     background-color: #fbfafd;
 }
 
+@media (max-width: 768px) {
+    .corona-data{
+        margin-top: 340px;
+    }
+    .count{
+        font-size: 1px;
+    }
+}

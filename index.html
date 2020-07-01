@@ -83,88 +83,85 @@
 </section>
 <br>
 <br>
-
 <br>
-    <div class="container-fluid table-responsive">
-    <table class="table table-bordered table-striped text-center" id="tbid">
-    <tr>
-        <th>Country</th>
-        <th>Total Confirmed</th>
-        <th>Total Recovered</th>
-        <th>Total Deaths</th>
-        <th>New Confirmed</th>
-        <th>New Recovered</th>
-        <th>New Deaths</th>
-    </tr>
-    </table>
-    </div>
-   
-    <footer class="footer mt-5">
-        <h6 class="text-center bg-dark text-white container-fluid">Copyright C 2020 - All rights reserved -</h6>
-    </footer>
+<div class="table-responsive container-fluid">
+  <table class="table table-bordered table-striped text-center" id="tbid">
+  <tr>
+      <th>Country</th>
+      <th>Total Confirmed</th>
+      <th>Total Recovered</th>
+      <th>Total Deaths</th>
+      <th>New Confirmed</th>
+      <th>New Recovered</th>
+      <th>New Deaths</th>
+  </tr>
+  </table>
+  </div>
+ 
+  <footer class="footer mt-5">
+      <h6 class="text-center bg-dark text-white container-fluid">Copyright C 2020 - All rights reserved -</h6>
+  </footer>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js">
-    </script>
-    <script>
-    
-    function fetchData() {
-        $.get("https://api.covid19api.com/summary",
-        function(data){
-            var tcases = document.getElementById('tcases');
-            tcases.textContent = data['Global']['TotalConfirmed'];
-            var tdeaths = document.getElementById('tdeaths');
-            tdeaths.textContent = data['Global']['TotalDeaths'];
-            var trecovered = document.getElementById('trecovered');
-            trecovered.textContent = data['Global']['TotalRecovered'];
-            var tactive = document.getElementById('tactive');
-            tactive.textContent = data['Global']['TotalConfirmed']-(data['Global']['TotalDeaths'] + data['Global']['TotalRecovered']);
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js">
+  </script>
+  <script>
+  
+  function fetchData() {
+      $.get("https://api.covid19api.com/summary",
+      function(data){
+          var tcases = document.getElementById('tcases');
+          tcases.textContent = data['Global']['TotalConfirmed'];
+          var tdeaths = document.getElementById('tdeaths');
+          tdeaths.textContent = data['Global']['TotalDeaths'];
+          var trecovered = document.getElementById('trecovered');
+          trecovered.textContent = data['Global']['TotalRecovered'];
+          var tactive = document.getElementById('tactive');
+          tactive.textContent = data['Global']['TotalConfirmed']-(data['Global']['TotalDeaths'] + data['Global']['TotalRecovered']);
 
-            //console.log(data['Countries'].length);})
-            var tbl = document.getElementById('tbid');
+          //console.log(data['Countries'].length);})
+          var tbl = document.getElementById('tbid');
 
-            for(var i=0; i<(data['Countries'].length); i++){
-                var row = tbl.insertRow();
-                row.insertCell(0);
+          for(var i=0; i<(data['Countries'].length); i++){
+              var row = tbl.insertRow();
+              row.insertCell(0);
 
-                tbl.rows[i+1].cells[0].innerHTML = data['Countries'][i]['Country'];
-                //tbl.rows[i+1].cells[0].style.background = 'red';
-                row.insertCell(1);
+              tbl.rows[i+1].cells[0].innerHTML = data['Countries'][i]['Country'];
+              //tbl.rows[i+1].cells[0].style.background = 'red';
+              row.insertCell(1);
 
-                tbl.rows[i+1].cells[1].innerHTML = data['Countries'][i]['TotalConfirmed'];
+              tbl.rows[i+1].cells[1].innerHTML = data['Countries'][i]['TotalConfirmed'];
 
-                row.insertCell(2);
+              row.insertCell(2);
 
-                tbl.rows[i+1].cells[2].innerHTML = data['Countries'][i]['TotalRecovered'];
+              tbl.rows[i+1].cells[2].innerHTML = data['Countries'][i]['TotalRecovered'];
 
-                row.insertCell(3);
+              row.insertCell(3);
 
-                tbl.rows[i+1].cells[3].innerHTML = data['Countries'][i]['TotalDeaths'];
+              tbl.rows[i+1].cells[3].innerHTML = data['Countries'][i]['TotalDeaths'];
 
-                row.insertCell(4);
+              row.insertCell(4);
 
-                tbl.rows[i+1].cells[4].innerHTML = data['Countries'][i]['NewConfirmed'];
+              tbl.rows[i+1].cells[4].innerHTML = data['Countries'][i]['NewConfirmed'];
 
-                row.insertCell(5);
+              row.insertCell(5);
 
-                tbl.rows[i+1].cells[5].innerHTML = data['Countries'][i]['NewRecovered'];
+              tbl.rows[i+1].cells[5].innerHTML = data['Countries'][i]['NewRecovered'];
 
-                row.insertCell(6);
+              row.insertCell(6);
 
-                tbl.rows[i+1].cells[6].innerHTML = data['Countries'][i]['NewDeaths'];
-            }
-        }
-        );
-          
+              tbl.rows[i+1].cells[6].innerHTML = data['Countries'][i]['NewDeaths'];
+          }
+      }
+      );
         
-    }
-    
-    
-    
-    </script>
+      
+  }
+ 
+  </script>    
     
 </body>
 </html>
